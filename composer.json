@@ -1,0 +1,20 @@
+{
+    "name" : "phasty/server",
+    "description" : "PHP servers library",
+    "keywords" : ["php", "server", "http", "websocket"],
+    "authors" : [
+        {
+            "name" : "Dmitry Cheremnykh",
+            "email" : "lockalister@gmail.com"
+        }
+    ],
+    "require" : {
+        "phasty/stream" : "0.1.*@dev",
+        "phasty/events" : "0.1.*@dev"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Phasty\\Events\\" : "src"
+        }
+    }
+}
