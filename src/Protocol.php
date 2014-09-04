@@ -1,10 +1,19 @@
 <?php
 namespace Phasty\Server {
-    interface Protocol {
-        static public function match($request);
+    abstract class Protocol {
+        /**
+         * @var server \Phasty\Server\Server instance that serves incoming connections
+         */
+        protected $server = null;
 
-        public function dispatch(Message $request);
+        abstract static public function match($request);
 
-        public function getRequestObject();
+        abstract public function dispatch(Message $request);
+
+        abstract public function getRequestObject();
+
+        public function __construct(\Phasty\Server\Server $server) {
+            $this->server = $server;
+        }
     }
 }

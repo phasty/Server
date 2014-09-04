@@ -2,7 +2,6 @@
 namespace Phasty\Server\Http {
     class Request extends Message {
         static protected function parseFirstLine($firstLine) {
-            var_dump($firstLine);
             $matched = preg_match(
                 "#(?<method>GET|HEAD|POST|PUT|DELETE|TRACE|CONNECT)\s(?<path>\S+)\sHTTP/(?<version>1\.[01])#",
                 $firstLine,

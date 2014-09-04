@@ -133,9 +133,10 @@ namespace Phasty\Server\Http {
             return
                 $firstLine . $DLM .
                 "Server: Phasty/1.0" . $DLM .
+                "X-Random: " . rand() . $DLM .
                 // "Content-Length: " . mb_strlen($this->body) . $DLM .
                 $flatHeaders . $DLM .
-                $this->body;
+                $this->body . "\n";
         }
 
         // TODO: неправильно отрабатывает при некорректном запросе
@@ -190,6 +191,7 @@ namespace Phasty\Server\Http {
                 $result[ "headers" ][ $headerName ] []= ltrim($header[ 1 ]);
                 $header = strtok($DLM);
             }
+            $result[ "body" ] = $message[ 1 ];
             return $result;
         }
     }

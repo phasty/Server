@@ -1,7 +1,7 @@
 <?php
 namespace Phasty\Server\Http {
     use \Phasty\Server\Message;
-    class Protocol1p1 implements \Phasty\Server\Protocol {
+    class Protocol1p1 extends \Phasty\Server\Protocol {
         static protected $allowedMethods = [
             "GET" => true
         ];
@@ -27,7 +27,8 @@ namespace Phasty\Server\Http {
                     ->on("sent", [ $request, "dispatched" ])
                     ->send();
             });
-            Router::route($request, $response);
+
+            $this->server->trigger("request", (object)compact("request", "response"));
         }
 
         public static function match($request) {die(__CLASS__ . __FUNCTION__);

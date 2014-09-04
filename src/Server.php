@@ -47,7 +47,7 @@ namespace Phasty\Server {
         }
 
         protected function care(\Phasty\Stream\Stream $connection, Protocol $protocol = null) {
-            $protocol = $protocol instanceof Protocol ? $protocol : new $this->defaultProtocol();
+            $protocol = $protocol instanceof Protocol ? $protocol : new $this->defaultProtocol($this);
 
             $request = $protocol->getRequestObject();
             $request->setReadStream($connection);
