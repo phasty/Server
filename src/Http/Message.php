@@ -194,5 +194,9 @@ namespace Phasty\Server\Http {
             $result[ "body" ] = $message[ 1 ];
             return $result;
         }
+
+        protected function parseFirstLine($firstLine) {
+            throw new \BadMethodCallException("Method " . get_called_class()  . "::" . __FUNCTION__ . " not implemented");
+        }
     }
 }

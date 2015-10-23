@@ -72,11 +72,28 @@ namespace Phasty\Server\Http {
             return $this;
         }
 
+        public function getCode() {
+            return $this->firstLine[ "code" ];
+        }
+
         protected function getFirstLine() {
             if (!$this->firstLine) {
                 return null;
             }
             return "HTTP/" . $this->firstLine[ "version" ] . " " . $this->firstLine[ "code" ] . " " . $this->firstLine[ "status" ];
+        }
+
+        protected function parseFirstLine($firstLine) {
+            $matched = preg_match(
+                "#HTTP/(?<version>[01]\.[019])\s+(?<code>\d{3})\s+(?<message>\w+)#",
+                $firstLine,
+                $matches
+            );
+            if (!$matched) {
+                return null;
+            }
+            unset($matches[0], $matches[1], $matches[2], $matches[3]);
+            return $matches;
         }
     }
 }
