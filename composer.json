@@ -9,7 +9,7 @@
         }
     ],
     "require" : {
-        "phasty/stream" : "0.1.*@dev",
+        "phasty/stream" : "0.2.*",
         "phasty/events" : "0.1.*@dev"
     },
     "autoload" : {
