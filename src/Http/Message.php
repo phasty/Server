@@ -191,7 +191,7 @@ namespace Phasty\Server\Http {
                 $result[ "headers" ][ $headerName ] []= ltrim($header[ 1 ]);
                 $header = strtok($DLM);
             }
-            if (isset($result[ "headers" ][ "content-length" ])) {
+            if (!empty($result[ "headers" ][ "content-length" ])) {
                 if (strlen($message [ 1 ]) < $result[ "headers" ][ "content-length" ][ 0 ]) {
                     return null;
                 }
