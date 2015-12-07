@@ -83,7 +83,7 @@ namespace Phasty\Server\Http {
             return "HTTP/" . $this->firstLine[ "version" ] . " " . $this->firstLine[ "code" ] . " " . $this->firstLine[ "status" ];
         }
 
-        protected function parseFirstLine($firstLine) {
+        static protected function parseFirstLine($firstLine) {
             $matched = preg_match(
                 "#HTTP/(?<version>[01]\.[019])\s+(?<code>\d{3})\s+(?<message>\w+)#",
                 $firstLine,

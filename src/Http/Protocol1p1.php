@@ -31,7 +31,7 @@ namespace Phasty\Server\Http {
             $this->server->trigger("request", (object)compact("request", "response"));
         }
 
-        public static function match($request) {die(__CLASS__ . __FUNCTION__);
+        public static function match($request) {
             $method = strtoupper($request->getMethod());
             if (!isset(self::$allowedMethods[ $method ])) {
                 return false;
